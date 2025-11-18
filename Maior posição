@@ -1,0 +1,28 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int N;
+    cin >> N;
+
+    double vet[100];
+
+    for (int i = 0; i < N; i++) {
+        cin >> vet[i];
+    }
+
+    double maior = vet[0];
+    int pos = 0;
+
+    for (int i = 1; i < N; i++) {
+        if (vet[i] > maior) {
+            maior = vet[i];
+            pos = i;
+        }
+    }
+
+    cout << "Maior valor = " << maior << endl;
+    cout << "Posicao = " << pos << endl;
+
+    return 0;
+}
