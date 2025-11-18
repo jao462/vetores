@@ -1,0 +1,71 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+
+    int N;
+    cout << "Quantas mercadorias serao digitadas? ";
+    cin >> N;
+
+    // Contadores das faixas de lucro
+    int lucroMenor10 = 0;
+    int lucroEntre10e20 = 0;
+    int lucroMaior20 = 0;
+
+    // Totais
+    double totalCompra = 0;
+    double totalVenda = 0;
+
+    for (int i = 0; i < N; i++) {
+
+        string nome;
+        double compra, venda;
+
+        cout << "Nome da mercadoria: ";
+        cin >> nome;
+
+        cout << "Preco de compra: ";
+        cin >> compra;
+
+        cout << "Preco de venda: ";
+        cin >> venda;
+
+        // Soma dos valores
+        totalCompra += compra;
+        totalVenda += venda;
+
+        // Cálculo do lucro percentual
+        double lucro = venda - compra;
+        double percentual = (lucro / compra) * 100.0;
+
+        // Verificando em qual faixa o lucro está
+        if (percentual < 10.0) {
+            lucroMenor10++;
+        }
+        else if (percentual <= 20.0) {
+            lucroEntre10e20++;
+        }
+        else {
+            lucroMaior20++;
+        }
+
+        cout << endl;
+    }
+
+    double lucroTotal = totalVenda - totalCompra;
+
+    cout << fixed << setprecision(2);
+
+    // Resultados
+    cout << "RELATORIO:" << endl;
+    cout << "Lucro < 10%: " << lucroMenor10 << endl;
+    cout << "10% <= Lucro <= 20%: " << lucroEntre10e20 << endl;
+    cout << "Lucro > 20%: " << lucroMaior20 << endl;
+
+    cout << "Valor total de compra: " << totalCompra << endl;
+    cout << "Valor total de venda: " << totalVenda << endl;
+    cout << "Lucro total: " << lucroTotal << endl;
+
+    return 0;
+}
