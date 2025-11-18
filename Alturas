@@ -1,0 +1,38 @@
+#Include <iostream>
+#include <string>
+usingnamespace std;
+
+int main(){
+
+    int N;
+    cin >> N;
+
+    string nome[100];
+    int idade[100];
+    double altura[100];
+
+    for (int i = 0; i < N; i++) {
+        cin >> nome[i] >> idade[i] >> altura[i];
+    }
+
+    double soma = 0;
+    int cont = 0;
+
+    for (int i = 0; i < N; i++) {
+        soma += altura[i];
+        if (idade[i] < 16) {
+            cont++;
+        }
+    }
+
+    cout << "Altura media = " << soma / N << endl;
+    cout << "Pessoas com menos de 16 anos = " << (cont * 100.0 / N) << "%" << endl;
+
+    for (int i = 0; i < N; i++) {
+        if (idade[i] < 16) {
+            cout << nome[i] << endl;
+        }
+    }
+
+    return 0;
+}
