@@ -1,0 +1,45 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int N;
+    cin >> N;
+
+    double altura[100];
+    char genero[100];
+
+    for (int i = 0; i < N; i++) {
+        cin >> altura[i] >> genero[i];
+    }
+
+    double maior = altura[0];
+    double menor = altura[0];
+    double somaMulheres = 0;
+    int contMulheres = 0;
+    int contHomens = 0;
+
+    for (int i = 0; i < N; i++) {
+        if (altura[i] > maior) maior = altura[i];
+        if (altura[i] < menor) menor = altura[i];
+
+        if (genero[i] == 'F' || genero[i] == 'f') {
+            somaMulheres += altura[i];
+            contMulheres++;
+        } else if (genero[i] == 'M' || genero[i] == 'm') {
+            contHomens++;
+        }
+    }
+
+    cout << "Maior altura = " << maior << endl;
+    cout << "Menor altura = " << menor << endl;
+
+    if (contMulheres > 0) {
+        cout << "Media das mulheres = " << somaMulheres / contMulheres << endl;
+    } else {
+        cout << "Media das mulheres = 0" << endl;
+    }
+
+    cout << "Numero de homens = " << contHomens << endl;
+
+    return 0;
+}
